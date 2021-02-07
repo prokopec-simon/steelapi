@@ -3,7 +3,7 @@
     "express": "^4.17.1",
     "hltv": "^2.23.0",
     "hltv-api": "^2.0.1"  
-  }
+  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
