@@ -5,7 +5,7 @@ const fs = require('fs')
 
 const app = express()
 
-app.get('/ranking', async (req, res) => {
+app.get('/api/ranking', async (req, res) => {
   const ranking= await HLTV2.getTeamRanking()
   res.json(ranking)
 })
