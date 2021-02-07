@@ -224,3 +224,4 @@ app.listen(3000, () => {
 //httpsServer.listen(3001, () => {
 //  console.log('HTTPS Server running on port 3001');
 //})
+module.exports = app
