@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "hltv": "^2.23.0",
-    "hltv-api": "^2.0.1"  
+    "hltv-api": "^2.0.1"
+    "next": "^10.0.6"
   },
   "scripts": {
     "dev": "node index.js",
