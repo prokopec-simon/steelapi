@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "node index.js",
-    "build": "next build",
+    "build": "tsc -p .",
     "start": "NODE_ENV=production node index.js"
   }
 }
