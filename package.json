@@ -1,4 +1,9 @@
 {
+  {
+  "name": "steelapi",
+  "version": "1.0",
+  "description": "WebAPI for Hltv.org",
+  "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
     "hltv": "^2.23.0",
@@ -7,6 +12,6 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node index.js"
   }
 }
