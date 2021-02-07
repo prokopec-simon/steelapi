@@ -1,8 +1,4 @@
 {
-  "name": "steelapi",
-  "version": "1.0.0",
-  "description": "WebAPI for Hltv.org",
-  "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
     "hltv": "^2.23.0",
@@ -10,9 +6,22 @@
     "next": "^10.0.6",
     "vercel": "^21.2.3"
   },
+  "name": "hltv-api",
+  "description": "The API for the HLTv-discord-bridge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "dev": "node index.js",
-    "build": "tsc -p .",
-    "start": "NODE_ENV=production node index.js"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Revilum/steelapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Revilum/steelapi/issues"
+  },
+  "homepage": "https://github.com/Revilum/steelapi#readme"
 }
