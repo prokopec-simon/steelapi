@@ -2,7 +2,6 @@ const HLTV = require('hltv-api').default
 const express = require('express')
 const { HLTV: HLTV2 } = require("hltv")
 const fs = require('fs')
-const https = require('https');
 
 const app = express()
 
@@ -202,15 +201,15 @@ app.get('/:matchId(*)', async (req, res) => {
 	res.json(stats)
 })
 
-const privateKey = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/privkey.pem`, 'utf8', () => {})
-const certificate = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/fullchain.pem`, 'utf8', () => {})
-const ca = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/chain.pem`, 'utf8', () => {})
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-  ca: ca
-}
-const httpsServer = https.createServer(credentials, app);
+//const privateKey = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/privkey.pem`, 'utf8', () => {})
+//const certificate = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/fullchain.pem`, 'utf8', () => {})
+//const ca = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/chain.pem`, 'utf8', () => {})
+//const credentials = {
+//  key: privateKey,
+//  cert: certificate,
+//  ca: ca
+//}
+//const httpsServer = https.createServer(credentials, app);
 
 app.use(function(req, res, next){
     res.setTimeout(500000, function(){
@@ -225,5 +224,3 @@ app.listen(3000, () => {
 //httpsServer.listen(3001, () => {
 //  console.log('HTTPS Server running on port 3001');
 //})
-
-module.exports = app
