@@ -2,7 +2,6 @@ const HLTV = require('hltv-api').default
 const express = require('express')
 const { HLTV: HLTV2 } = require("hltv")
 const fs = require('fs')
-const https = require('https');
 
 const app = express()
 
@@ -225,5 +224,3 @@ app.listen(3000, () => {
 //httpsServer.listen(3001, () => {
 //  console.log('HTTPS Server running on port 3001');
 //})
-
-module.exports = app
