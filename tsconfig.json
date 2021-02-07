@@ -11,6 +11,6 @@
     "preserveConstEnums": true,
     "sourceMap": true
   },
-  "files": ["./src/index.ts"],
+  "files": ["./index.js"],
   "exclude": ["node_modules", "dist"]
 }
