@@ -202,15 +202,15 @@ app.get('/:matchId(*)', async (req, res) => {
 	res.json(stats)
 })
 
-const privateKey = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/privkey.pem`, 'utf8', () => {})
-const certificate = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/fullchain.pem`, 'utf8', () => {})
-const ca = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/chain.pem`, 'utf8', () => {})
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-  ca: ca
-}
-const httpsServer = https.createServer(credentials, app);
+//const privateKey = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/privkey.pem`, 'utf8', () => {})
+//const certificate = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/fullchain.pem`, 'utf8', () => {})
+//const ca = fs.readFileSync(`/etc/letsencrypt/live/revilum.com/chain.pem`, 'utf8', () => {})
+//const credentials = {
+//  key: privateKey,
+//  cert: certificate,
+//  ca: ca
+//}
+//const httpsServer = https.createServer(credentials, app);
 
 app.use(function(req, res, next){
     res.setTimeout(500000, function(){
