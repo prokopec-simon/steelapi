@@ -10,13 +10,13 @@ app.get('/api/ranking', async (req, res) => {
   res.json(ranking)
 })
 
-app.get('/ranking/:country', async (req, res) => {
+app.get('/api/ranking/:country', async (req, res) => {
   const parameters = new Object()
   parameters.country = req.params.country
   res.json(await HLTV2.getTeamRanking(parameters))
 })
 
-app.get('/ranking/:day/:month/:year', async (req, res) => {
+app.get('/api/ranking/:day/:month/:year', async (req, res) => {
   const parameters = new Object()
   parameters.year = req.params.year
   parameters.month = req.params.month
@@ -24,7 +24,7 @@ app.get('/ranking/:day/:month/:year', async (req, res) => {
   res.json(await HLTV2.getTeamRanking(parameters))
 })
 
-app.get('/player/:name', async (req, res) => {
+app.get('/api/player/:name', async (req, res) => {
   const parameters = new Object()
   parameters.name = req.params.name
   const playerInfo = HLTV2.getPlayerByName(parameters).then(res => {
@@ -33,69 +33,69 @@ app.get('/player/:name', async (req, res) => {
   res.json(await playerInfo)
 })
 
-app.get('/playerstats/:id', async (req, res) => {
+app.get('/api/playerstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const playerStats = await HLTV2.getPlayerStats(parameters)
   res.json(playerStats)
 })
 
-app.get('/upcommingevents', async (req, res) => {
+app.get('/api/upcommingevents', async (req, res) => {
   const upcommingevents = await HLTV2.getEvents()
   res.json(upcommingevents)
 })
 
-app.get('/ongoingevents', async (req, res) => {
+app.get('/api/ongoingevents', async (req, res) => {
   const ongoingevents = await HLTV2.getOngoingEvents()
   res.json(ongoingevents)
 })
 
-app.get('/event/:id', async (req, res) => {
+app.get('/api/event/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const event = await HLTV2.getEvent(parameters)
   res.json(event)
 })
 
-app.get('/match/:id', async (req, res) => {
+app.get('/api/match/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const match = await HLTV2.getMatch(parameters)
   res.json(match)
 })
 
-app.get('/matchstats/:id', async (req, res) => {
+app.get('/api/matchstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const matchstats = await HLTV2.getMatchStats(parameters)
   res.json(matchstats)
 })
 
-app.get('/matchesstats', async (req, res) => {
+app.get('/api/matchesstats', async (req, res) => {
   const matchesstats = await HLTV2.getMatchesStats({startDate: '2017-07-10', endDate: '2017-07-18'})
   res.json(matchesstats)
 })
 
-app.get('/matchmapstats/:id', async (req, res) => {
+app.get('/api/matchmapstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const matchmapstats = await HLTV2.getMatchStats(parameters)
   res.json(matchmapstats)
 })
 
-app.get('/streams/', async (req, res) => {
+app.get('/api/streams/', async (req, res) => {
   const streams = await HLTV2.getStreams()
   res.json(streams)
 })
 
-app.get('/team/:id', async (req, res) => {
+app.get('/api/team/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
   const team = await HLTV2.getTeam(parameters)
   res.json(team)
 })
 
-app.get('/teamstats/:id/:currentroster', async (req, res) => {
+app.get('/api/teamstats/:id/:currentroster', async (req, res) => {
   const parameters = new Object()
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
@@ -103,7 +103,7 @@ app.get('/teamstats/:id/:currentroster', async (req, res) => {
   res.json(teamstats)
 })
 
-app.get('/teamstats/:id/:currentroster/startdate/:startdate', async (req, res) => {
+app.get('/api/teamstats/:id/:currentroster/startdate/:startdate', async (req, res) => {
   const parameters = new Object()
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
@@ -113,7 +113,7 @@ app.get('/teamstats/:id/:currentroster/startdate/:startdate', async (req, res) =
   res.json(teamstats)
 })
 
-app.get('/teamstats/:id/:currentroster/enddate/:enddate', async (req, res) => {
+app.get('/api/teamstats/:id/:currentroster/enddate/:enddate', async (req, res) => {
   const parameters = new Object()
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
@@ -122,7 +122,7 @@ app.get('/teamstats/:id/:currentroster/enddate/:enddate', async (req, res) => {
   res.json(teamstats)
 })
 
-app.get('/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async (req, res) => {
+app.get('/api/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async (req, res) => {
   const parameters = new Object()
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
@@ -132,7 +132,7 @@ app.get('/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async (re
   res.json(teamstats)
 })
 
-app.get('/scoreboard/:id', async (req, res) => {
+app.get('/api/scoreboard/:id', async (req, res) => {
 		HLTV2.connectToScorebot({
 			id: req.params.id, 
 			onScoreboardUpdate: (data, done) => {
@@ -167,7 +167,7 @@ app.get('/scoreboard/:id', async (req, res) => {
 })
 
 //broken
-app.get('/playerranking/', async (req, res) => {
+app.get('/api/playerranking/', async (req, res) => {
 //  const parameters = new Object()
 //  parameters.startDate = req.params.startdate
 //  parameters.endDate = req.params.enddate
@@ -180,12 +180,12 @@ app.get('/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-app.get('/news', async (req, res) => {
+app.get('/api/news', async (req, res) => {
   const news = await HLTV.getNews()
   res.json(news)
 })
 
-app.get('/results', async (req, res) => {
+app.get('/api/results', async (req, res) => {
   const results = await HLTV.getResults()
   res.json(results)
 })
@@ -195,7 +195,7 @@ app.get('/matches', async (req, res) => {
   res.json(matches)
 })
 
-app.get('/:matchId(*)', async (req, res) => {
+app.get('/api/:matchId(*)', async (req, res) => {
 	const { matchId } = req.params
 	const stats = await HLTV.getStatsByMatchId(matchId)
 	res.json(stats)
