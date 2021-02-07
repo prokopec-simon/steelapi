@@ -9,7 +9,8 @@
     "esModuleInterop": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "allowJs":true
   },
   "files": ["./index.js"],
   "exclude": ["node_modules", "dist"]
