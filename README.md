@@ -1,2 +1,2 @@
 # hltv-api
-The API for the HLTv-discord-bridge
+The API for the HLTV-discord-bridge
