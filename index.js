@@ -206,7 +206,7 @@ app.get('/matches', async (req, res) => {
   res.json(matches)
 })
 
-app.get('/:matchId(*)', async (req, res) => {
+app.get('/oldmatchstats/:matchId(*)', async (req, res) => {
 	const { matchId } = req.params
 	const stats = await HLTV.getStatsByMatchId(matchId)
 	res.json(stats)
