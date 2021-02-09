@@ -4,7 +4,7 @@ const { HLTV: HLTV2 } = require("hltv")
 
 const app = express()
 
-app.get('/ranking', async (req, res) => {
+app.get('/api/ranking', async (req, res) => {
 //  const ranking= await HLTV2.getTeamRanking()
 	const ranking = await HLTV2.getOngoingEvents()
   res.json(ranking)
