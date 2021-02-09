@@ -9,11 +9,11 @@
   "name": "hltv-api",
   "description": "The API for the HLTV-discord-bridge",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "api/index.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node index.js"
+    "server": "node api/index.js"
   },
   "repository": {
     "type": "git",
