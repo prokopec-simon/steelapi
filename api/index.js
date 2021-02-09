@@ -1,9 +1,6 @@
 const HLTV = require('hltv-api').default
 const express = require('express')
 const { HLTV: HLTV2 } = require("hltv")
-const fs = require('fs')
-const https = require('https');
-var proxy = require('express-http-proxy')
 
 const app = express()
 
