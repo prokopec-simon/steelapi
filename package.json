@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node --unhandled-rejections=strict api/index.js"
+    "server": "node api/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Revilum/steelapi/issues"
+  },
+  "engines": {
+    "node": "=<12.0.0",
+    "npm": ">=6.0.0"
   },
   "homepage": "https://github.com/Revilum/steelapi#readme"
 }
