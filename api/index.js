@@ -207,6 +207,11 @@ app.get('/api/oldmatchstats/:matchId(*)', async (req, res) => {
 	res.json(stats)
 })
 
+app.get('/api/legacy/results', async (req, res) => {
+  const results = await HLTV.getResults()
+  res.json(results)
+})
+
 app.use (function(req, res, next){
     res.setTimeout(500000, function(){
         res.send("Timeout")
