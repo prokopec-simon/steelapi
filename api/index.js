@@ -4,6 +4,12 @@ const { HLTV: HLTV2 } = require("hltv")
 
 const app = express()
 
+
+app.get('/api/matches', async (req, res) => {
+  const matches = await HLTV2.getMatches()
+  res.json(matches)
+})
+
 app.get('/api/ranking/:country', async (req, res) => {
   const parameters = new Object()
   parameters.country = req.params.country
@@ -196,7 +202,7 @@ app.get('/api/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-app.get('/api/matches', async (req, res) => {
+app.get('/api/legacy/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
   res.json(matches)
 })
