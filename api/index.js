@@ -196,11 +196,6 @@ app.get('/api/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-app.get('/api/news', async (req, res) => {
-  const news = await HLTV.getNews()
-  res.json(news)
-})
-
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
   res.json(matches)
