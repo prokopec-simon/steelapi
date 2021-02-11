@@ -4,16 +4,21 @@ const { HLTV: HLTV2 } = require("hltv")
 
 const app = express()
 
+app.get('/api/ranking/:country', async (req, res) => {
+  const parameters = new Object()
+  parameters.country = req.params.country
+  res.json(await HLTV2.getTeamRanking(parameters))
+})
+
 app.get('/api/ranking', async (req, res) => {
 //  const ranking= await HLTV2.getTeamRanking()
 	const ranking = await HLTV2.getOngoingEvents()
   res.json(ranking)
 })
 
-app.get('/api/ranking/:country', async (req, res) => {
-  const parameters = new Object()
-  parameters.country = req.params.country
-  res.json(await HLTV2.getTeamRanking(parameters))
+app.get('/api/results', async (req, res) => {
+	const results = HLTV2.getResults({startPage:0,endPage:2})
+  res.json(await results)
 })
 
 app.get('/api/ranking/:day/:month/:year', async (req, res) => {
@@ -194,11 +199,6 @@ app.get('/api/', async (req, res) => {
 app.get('/api/news', async (req, res) => {
   const news = await HLTV.getNews()
   res.json(news)
-})
-
-app.get('/api/results', async (req, res) => {
-  const results = await HLTV.getResults()
-  res.json(results)
 })
 
 app.get('/api/matches', async (req, res) => {
