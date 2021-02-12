@@ -1,12 +1,13 @@
 const HLTV = require('hltv-api').default
 const express = require('express')
 const { HLTV: HLTV2 } = require("hltv")
+const fs = require("fs")
 
 const app = express()
 
 
 app.get('/api/matches', async (req, res) => {
-  const matches = await HLTV2.getMatches()
+  const matches = await HLTV2.getTeamRanking()
   res.json(matches)
 })
 
