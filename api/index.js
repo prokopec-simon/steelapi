@@ -7,7 +7,7 @@ const app = express()
 
 
 app.get('/api/matches', async (req, res) => {
-  const matches = await HLTV2.getTeamRanking()
+  const matches = await HLTV2.getMatches()
   res.json(matches)
 })
 
@@ -19,7 +19,7 @@ app.get('/api/ranking/:country', async (req, res) => {
 
 app.get('/api/ranking', async (req, res) => {
 //  const ranking= await HLTV2.getTeamRanking()
-	const ranking = await HLTV2.getOngoingEvents()
+	const ranking = await HLTV2.getTeamRanking()
   res.json(ranking)
 })
 
