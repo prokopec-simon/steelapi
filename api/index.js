@@ -1,30 +1,28 @@
-const HLTV = require('hltv-api').default
 const express = require('express')
-const { HLTV: HLTV2 } = require("hltv")
+const { HLTV } = require("hltv")
 const fs = require("fs")
 
 const app = express()
 
 
 app.get('/api/matches', async (req, res) => {
-  const matches = await HLTV2.getMatches()
+  const matches = await HLTV.getMatches()
   res.json(matches)
 })
 
 app.get('/api/ranking/:country', async (req, res) => {
   const parameters = new Object()
   parameters.country = req.params.country
-  res.json(await HLTV2.getTeamRanking(parameters))
+  res.json(await HLTV.getTeamRanking(parameters))
 })
 
 app.get('/api/ranking', async (req, res) => {
-//  const ranking= await HLTV2.getTeamRanking()
-	const ranking = await HLTV2.getTeamRanking()
+	const ranking = await HLTV.getTeamRanking()
   res.json(ranking)
 })
 
 app.get('/api/results', async (req, res) => {
-	const results = HLTV2.getResults({startPage:0,endPage:2})
+	const results = HLTV.getResults({startPage:0,endPage:2})
   res.json(await results)
 })
 
@@ -38,13 +36,13 @@ app.get('/api/ranking/:day/:month/:year', async (req, res) => {
 	parameters.year = date.getFullYear()
 	parameters.month = months[date.getMonth()]
 	parameters.day = date.getDate()
-  res.json(await HLTV2.getTeamRanking(parameters))
+  res.json(await HLTV.getTeamRanking(parameters))
 })
 
 app.get('/api/player/:name', async (req, res) => {
   const parameters = new Object()
   parameters.name = req.params.name
-  const playerInfo = HLTV2.getPlayerByName(parameters).then(res => {
+  const playerInfo = HLTV.getPlayerByName(parameters).then(res => {
     return res
 	}).catch(err => {return {}})
   res.json(await playerInfo)
@@ -53,62 +51,62 @@ app.get('/api/player/:name', async (req, res) => {
 app.get('/api/playerstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const playerStats = await HLTV2.getPlayerStats(parameters)
+  const playerStats = await HLTV.getPlayerStats(parameters)
   res.json(playerStats)
 })
 
 app.get('/api/upcommingevents', async (req, res) => {
-  const upcommingevents = await HLTV2.getEvents()
+  const upcommingevents = await HLTV.getEvents()
   res.json(upcommingevents)
 })
 
 app.get('/api/ongoingevents', async (req, res) => {
-  const ongoingevents = await HLTV2.getOngoingEvents()
+  const ongoingevents = await HLTV.getOngoingEvents()
   res.json(ongoingevents)
 })
 
 app.get('/api/event/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const event = await HLTV2.getEvent(parameters)
+  const event = await HLTV.getEvent(parameters)
   res.json(event)
 })
 
 app.get('/api/match/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const match = await HLTV2.getMatch(parameters)
+  const match = await HLTV.getMatch(parameters)
   res.json(match)
 })
 
 app.get('/api/matchstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const matchstats = await HLTV2.getMatchStats(parameters)
+  const matchstats = await HLTV.getMatchStats(parameters)
   res.json(matchstats)
 })
 
 app.get('/api/matchesstats', async (req, res) => {
-  const matchesstats = await HLTV2.getMatchesStats({startDate: '2017-07-10', endDate: '2017-07-18'})
+  const matchesstats = await HLTV.getMatchesStats({startDate: '2017-07-10', endDate: '2017-07-18'})
   res.json(matchesstats)
 })
 
 app.get('/api/matchmapstats/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const matchmapstats = await HLTV2.getMatchStats(parameters)
+  const matchmapstats = await HLTV.getMatchStats(parameters)
   res.json(matchmapstats)
 })
 
 app.get('/api/streams/', async (req, res) => {
-  const streams = await HLTV2.getStreams()
+  const streams = await HLTV.getStreams()
   res.json(streams)
 })
 
 app.get('/api/team/:id', async (req, res) => {
   const parameters = new Object()
   parameters.id = req.params.id
-  const team = await HLTV2.getTeam(parameters)
+  const team = await HLTV.getTeam(parameters)
   res.json(team)
 })
 
@@ -116,7 +114,7 @@ app.get('/api/teamstats/:id/:currentroster', async (req, res) => {
   const parameters = new Object()
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
-  const teamstats = await HLTV2.getTeamStats(parameters)
+  const teamstats = await HLTV.getTeamStats(parameters)
   res.json(teamstats)
 })
 
@@ -126,7 +124,7 @@ app.get('/api/teamstats/:id/:currentroster/startdate/:startdate', async (req, re
   parameters.id = req.params.id
   parameters.startDate = req.params.startdate
   console.log(parameters)
-  const teamstats = await HLTV2.getTeamStats(parameters)
+  const teamstats = await HLTV.getTeamStats(parameters)
   res.json(teamstats)
 })
 
@@ -135,7 +133,7 @@ app.get('/api/teamstats/:id/:currentroster/enddate/:enddate', async (req, res) =
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
   parameters.EndDate = req.params.enddate
-  const teamstats = await HLTV2.getTeamStats(parameters)
+  const teamstats = await HLTV.getTeamStats(parameters)
   res.json(teamstats)
 })
 
@@ -145,7 +143,7 @@ app.get('/api/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async
   parameters.id = req.params.id
   parameters.startDate = req.params.startdate
   parameters.EndDate = req.params.enddate
-  const teamstats = await HLTV2.getTeamStats(parameters)
+  const teamstats = await HLTV.getTeamStats(parameters)
   res.json(teamstats)
 })
 
@@ -155,7 +153,7 @@ var onScoreboardUpdatePrevious
 var onScoreboardUpdateCurrent
 
 app.get('/api/scoreboard/:id', async (req, res) => {
-		HLTV2.connectToScorebot({
+		HLTV.connectToScorebot({
 			id: req.params.id, 
 			onLogUpdate: (data, done) => {
 			if (onLogUpdatePrevious == undefined) {
@@ -194,29 +192,13 @@ app.get('/api/playerranking/', async (req, res) => {
 //  const parameters = new Object()
 //  parameters.startDate = req.params.startdate
 //  parameters.endDate = req.params.enddate
-  const playerranking = await HLTV2.getPlayerRanking()
+  const playerranking = await HLTV.getPlayerRanking()
 //  console.log(playerranking)
   res.json(playerranking)
 })
 
 app.get('/api/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
-})
-
-app.get('/api/legacy/matches', async (req, res) => {
-  const matches = await HLTV.getMatches()
-  res.json(matches)
-})
-
-app.get('/api/oldmatchstats/:matchId(*)', async (req, res) => {
-	const { matchId } = req.params
-	const stats = await HLTV.getStatsByMatchId(matchId)
-	res.json(stats)
-})
-
-app.get('/api/legacy/results', async (req, res) => {
-  const results = await HLTV.getResults()
-  res.json(results)
 })
 
 app.use (function(req, res, next){
