@@ -7,7 +7,7 @@ const enableWs = require('express-ws')(app)
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	fs.writeFile("./cache/matches.json", JSON.stringify(matches, null, 4), (err) => {})
+	fs.writeFile("../cache/matches.json", JSON.stringify(matches, null, 4), (err) => {})
   res.json(matches)
 })
 
