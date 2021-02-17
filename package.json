@@ -1,10 +1,13 @@
 {
   "dependencies": {
     "express": "^4.17.1",
+    "express-ws": "^4.0.0",
     "hltv": "^2.23.0",
     "hltv-api": "^2.0.1",
     "next": "^10.0.6",
-    "vercel": "^21.2.3"
+    "prompt-sync": "^4.2.0",
+    "vercel": "^21.2.3",
+    "websocket": "^1.0.33"
   },
   "name": "hltv-api",
   "description": "The API for the HLTV-discord-bridge",

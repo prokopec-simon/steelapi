@@ -1,2 +1,4 @@
 node_modules/
 scoreboard/
+testclient.js
+getScoreboardData.js

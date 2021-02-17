@@ -1,0 +1,1082 @@
+[
+    {
+        "id": 2346516,
+        "team1": {
+            "name": "Cloud9",
+            "id": 5752
+        },
+        "team2": {
+            "name": "OG",
+            "id": 10503
+        },
+        "event": {
+            "name": "IEM Katowice 2021 Play-In"
+        },
+        "format": "bo3",
+        "stars": 2,
+        "live": true
+    },
+    {
+        "id": 2346517,
+        "team1": {
+            "name": "Virtus.pro",
+            "id": 5378
+        },
+        "team2": {
+            "name": "Renegades",
+            "id": 6211
+        },
+        "event": {
+            "name": "IEM Katowice 2021 Play-In"
+        },
+        "format": "bo3",
+        "stars": 1,
+        "live": true
+    },
+    {
+        "id": 2346531,
+        "team1": {
+            "name": "Case",
+            "id": 10894
+        },
+        "team2": {
+            "name": "Sharks",
+            "id": 8113
+        },
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "format": "bo3",
+        "stars": 0,
+        "live": true
+    },
+    {
+        "id": 2346537,
+        "team1": {
+            "name": "eXploit",
+            "id": 10192
+        },
+        "team2": {
+            "name": "OFFSET",
+            "id": 8515
+        },
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "format": "bo3",
+        "stars": 0,
+        "live": true
+    },
+    {
+        "id": 2346543,
+        "date": 1613581200000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group F Winners' Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346549,
+        "date": 1613581200000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group F Elimination Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346518,
+        "date": 1613584800000,
+        "team1": {
+            "name": "mousesports",
+            "id": 4494
+        },
+        "team2": {
+            "name": "Complexity",
+            "id": 5005
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021 Play-In"
+        },
+        "stars": 2,
+        "live": false
+    },
+    {
+        "id": 2346519,
+        "date": 1613584800000,
+        "team1": {
+            "name": "BIG",
+            "id": 7532
+        },
+        "team2": {
+            "name": "MIBR",
+            "id": 9215
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021 Play-In"
+        },
+        "stars": 2,
+        "live": false
+    },
+    {
+        "id": 2346624,
+        "date": 1613584800000,
+        "team1": {
+            "name": "FATE",
+            "id": 9863
+        },
+        "team2": {
+            "name": "SAW",
+            "id": 10567
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346625,
+        "date": 1613584800000,
+        "team1": {
+            "name": "PACT",
+            "id": 8248
+        },
+        "team2": {
+            "name": "Nemiga",
+            "id": 7969
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346626,
+        "date": 1613584800000,
+        "team1": {
+            "name": "forZe",
+            "id": 8135
+        },
+        "team2": {
+            "name": "Apeks",
+            "id": 9806
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346403,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Levitate",
+            "id": 10744
+        },
+        "team2": {
+            "name": "Third Impact",
+            "id": 10469
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346411,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Oceanus",
+            "id": 10282
+        },
+        "team2": {
+            "name": "Rise",
+            "id": 10687
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346612,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Rebirth",
+            "id": 10357
+        },
+        "team2": {
+            "name": "RBG",
+            "id": 10258
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346613,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Secret Club",
+            "id": 10747
+        },
+        "team2": {
+            "name": "ImPerium",
+            "id": 10624
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346614,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Watch This",
+            "id": 10991
+        },
+        "team2": {
+            "name": "GGPR",
+            "id": 9974
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346615,
+        "date": 1613613600000,
+        "team1": {
+            "name": "Eclipse",
+            "id": 6987
+        },
+        "team2": {
+            "name": "SKDC",
+            "id": 5454
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346532,
+        "date": 1613635200000,
+        "team1": {
+            "name": "SKADE",
+            "id": 10386
+        },
+        "team2": {
+            "name": "ONYX",
+            "id": 11001
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346538,
+        "date": 1613635200000,
+        "team1": {
+            "name": "MBAPPEEK",
+            "id": 10848
+        },
+        "team2": {
+            "name": "4glory",
+            "id": 10933
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346544,
+        "date": 1613646000000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group G Winners' Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346550,
+        "date": 1613646000000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group G Elimination Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346560,
+        "date": 1613646000000,
+        "team1": {
+            "name": "Evil Geniuses",
+            "id": 10399
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346564,
+        "date": 1613646000000,
+        "team1": {
+            "name": "G2",
+            "id": 5995
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346533,
+        "date": 1613656800000,
+        "team1": {
+            "name": "Lyngby Vikings",
+            "id": 8963
+        },
+        "team2": {
+            "name": "Astralis Talent",
+            "id": 10954
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346539,
+        "date": 1613656800000,
+        "team1": {
+            "name": "Tricked",
+            "id": 4602
+        },
+        "team2": {
+            "name": "Copenhagen Flames",
+            "id": 7461
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346561,
+        "date": 1613658600000,
+        "team1": {
+            "name": "Astralis",
+            "id": 6665
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346565,
+        "date": 1613658600000,
+        "team1": {
+            "name": "Heroic",
+            "id": 7175
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346545,
+        "date": 1613667600000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group H Winners' Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346551,
+        "date": 1613667600000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group H Elimination Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346562,
+        "date": 1613671200000,
+        "team1": {
+            "name": "FaZe",
+            "id": 6667
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346566,
+        "date": 1613671200000,
+        "team1": {
+            "name": "Vitality",
+            "id": 9565
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346552,
+        "date": 1613721600000,
+        "team1": {
+            "name": "1WIN",
+            "id": 10621
+        },
+        "team2": {
+            "name": "Trident",
+            "id": 10977
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346556,
+        "date": 1613721600000,
+        "team1": {
+            "name": "Unique",
+            "id": 9287
+        },
+        "team2": {
+            "name": "Winstrike",
+            "id": 9183
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346553,
+        "date": 1613732400000,
+        "team1": {
+            "name": "Apeks",
+            "id": 9806
+        },
+        "team2": {
+            "name": "Lilmix",
+            "id": 9735
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346557,
+        "date": 1613732400000,
+        "team1": {
+            "name": "StylDunow",
+            "id": 10983
+        },
+        "team2": {
+            "name": "Illuminar",
+            "id": 8813
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346563,
+        "date": 1613732400000,
+        "team1": {
+            "name": "FURIA",
+            "id": 8297
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346567,
+        "date": 1613732400000,
+        "team1": {
+            "name": "Natus Vincere",
+            "id": 4608
+        },
+        "team2": {
+            "name": "TBD"
+        },
+        "format": "bo3",
+        "event": {
+            "name": "IEM Katowice 2021"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346554,
+        "date": 1613743200000,
+        "team1": {
+            "name": "Ambush",
+            "id": 7674
+        },
+        "team2": {
+            "name": "Nordavind",
+            "id": 8769
+        },
+        "format": "bo3",
+        "event": {
+            "name": "Snow Sweet Snow 2 Regionals"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346558,
+        "date": 1613743200000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group F Decider Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346568,
+        "date": 1613745000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A UB Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346576,
+        "date": 1613745000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A LB Round 1 #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346555,
+        "date": 1613754000000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group G Decider Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346559,
+        "date": 1613754000000,
+        "format": "bo3",
+        "title": "Snow Sweet Snow 2 Regionals - Group H Decider Match",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346569,
+        "date": 1613757600000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A UB Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346577,
+        "date": 1613757600000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A LB Round 1 #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346570,
+        "date": 1613818800000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B LB Round 1 #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346578,
+        "date": 1613818800000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B LB Round 1 #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346571,
+        "date": 1613831400000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B UB Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346579,
+        "date": 1613831400000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A LB Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346572,
+        "date": 1613844000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B UB Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346580,
+        "date": 1613844000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A LB Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346573,
+        "date": 1613905200000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B LB Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346581,
+        "date": 1613905200000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B LB Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346574,
+        "date": 1613917800000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A LB Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346582,
+        "date": 1613917800000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group A UB Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346575,
+        "date": 1613930400000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B LB Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346583,
+        "date": 1613930400000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Group B UB Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346453,
+        "date": 1613991600000,
+        "team1": {
+            "name": "Nemiga",
+            "id": 7969
+        },
+        "team2": {
+            "name": "forZe",
+            "id": 8135
+        },
+        "format": "bo3",
+        "event": {
+            "name": "European Development Championship 2"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346454,
+        "date": 1614002400000,
+        "team1": {
+            "name": "Budapest Five",
+            "id": 9802
+        },
+        "team2": {
+            "name": "Movistar Riders",
+            "id": 7718
+        },
+        "format": "bo3",
+        "event": {
+            "name": "European Development Championship 2"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346455,
+        "date": 1614078000000,
+        "team1": {
+            "name": "Sinners",
+            "id": 10577
+        },
+        "team2": {
+            "name": "HellRaisers",
+            "id": 5310
+        },
+        "format": "bo3",
+        "event": {
+            "name": "European Development Championship 2"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346456,
+        "date": 1614088800000,
+        "team1": {
+            "name": "Sprout",
+            "id": 8637
+        },
+        "team2": {
+            "name": "SAW",
+            "id": 10567
+        },
+        "format": "bo3",
+        "event": {
+            "name": "European Development Championship 2"
+        },
+        "stars": 1,
+        "live": false
+    },
+    {
+        "id": 2346457,
+        "date": 1614164400000,
+        "format": "bo3",
+        "title": "EDC S2 - Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346458,
+        "date": 1614175200000,
+        "format": "bo3",
+        "title": "EDC S2 - Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346620,
+        "date": 1614200400000,
+        "team1": {
+            "name": "Paquetá",
+            "id": 10669
+        },
+        "team2": {
+            "name": "Santos",
+            "id": 9213
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 Brazil"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346618,
+        "date": 1614211200000,
+        "team1": {
+            "name": "Imperial",
+            "id": 9455
+        },
+        "team2": {
+            "name": "Havan Liberty",
+            "id": 10815
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 Brazil"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346611,
+        "date": 1614218400000,
+        "team1": {
+            "name": "Oceanus",
+            "id": 10282
+        },
+        "team2": {
+            "name": "Extra Salt",
+            "id": 10948
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 North America"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346459,
+        "date": 1614261600000,
+        "format": "bo3",
+        "title": "EDC S2 - Grand Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346619,
+        "date": 1614286800000,
+        "team1": {
+            "name": "Sharks",
+            "id": 8113
+        },
+        "team2": {
+            "name": "TeamOne",
+            "id": 6947
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 Brazil"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346617,
+        "date": 1614297600000,
+        "team1": {
+            "name": "MIBR",
+            "id": 9215
+        },
+        "team2": {
+            "name": "Bravos",
+            "id": 10605
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 Brazil"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346584,
+        "date": 1614348000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Quarter-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346585,
+        "date": 1614360600000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Quarter-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346134,
+        "date": 1614366000000,
+        "team1": {
+            "name": "9z",
+            "id": 9996
+        },
+        "team2": {
+            "name": "Coscu Army",
+            "id": 8871
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 LatAm South"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346135,
+        "date": 1614380400000,
+        "team1": {
+            "name": "River Plate",
+            "id": 10786
+        },
+        "team2": {
+            "name": "Malvinas",
+            "id": 8121
+        },
+        "format": "bo3",
+        "event": {
+            "name": "WESG 2021 LatAm South"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346586,
+        "date": 1614434400000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Semi-final #1",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346587,
+        "date": 1614447000000,
+        "format": "bo3",
+        "title": "IEM Katowice 2021 - Semi-final #2",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346588,
+        "date": 1614520800000,
+        "format": "bo5",
+        "title": "IEM Katowice 2021 - Grand Final",
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346605,
+        "date": 1614794400000,
+        "team1": {
+            "name": "Anonymo",
+            "id": 10973
+        },
+        "team2": {
+            "name": "PACT",
+            "id": 8248
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346506,
+        "date": 1614880800000,
+        "team1": {
+            "name": "FATE",
+            "id": 9863
+        },
+        "team2": {
+            "name": "Singularity",
+            "id": 6978
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    },
+    {
+        "id": 2346601,
+        "date": 1614880800000,
+        "team1": {
+            "name": "Wisla Krakow",
+            "id": 10426
+        },
+        "team2": {
+            "name": "forZe",
+            "id": 8135
+        },
+        "format": "bo3",
+        "event": {
+            "name": "ESEA Premier Season 36 Europe"
+        },
+        "stars": 0,
+        "live": false
+    }
+]
