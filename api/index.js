@@ -4,10 +4,21 @@ const fs = require("fs")
 
 const app = express()
 const enableWs = require('express-ws')(app)
+var matchesFile
+function getMatchesFile() {
+	if (matchesFile == undefined) {
+		matchesFile = HLTV.getMatches().then(function(data){
+			console.log(data)
+			return data
+		})
+	}
+	return matchesFile
+}
+getMatchesFile()
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	fs.writeFile("./cache/matches.json", JSON.stringify(matches, null, 4), (err) => {})
+	matchesFile = JSON.parse(matches)
   res.json(matches)
 })
 
@@ -148,16 +159,10 @@ app.get('/api/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async
   res.json(teamstats)
 })
 
-function getLiveIDs() {
-	var matches
+async function getLiveIDs() {
 	var matchIDs = []
-	try {
-		const data = fs.readFileSync('cache/matches.json', 'utf8')
-		matches = JSON.parse(data)
-	} catch (err) {
-		console.error(err)
-	}
-	matches.forEach(obj => {
+	var test = getMatchesFile()
+	await test.forEach(obj => {
 		if (obj.live == true) {
 			matchIDs.push(obj.id) 
 		}
@@ -167,9 +172,8 @@ function getLiveIDs() {
 
 app.get('/api/ongoingmatches/', async (req, res) => {
 	var matches = []
-	const matchesFile = JSON.parse(fs.readFileSync('cache/matches.json', 'utf8'))
-	getLiveIDs().forEach(id => {
-		var object = matchesFile.find(obj => obj.id == id)
+	await getLiveIDs().forEach(id => {
+		var object = getMatchesFile().find(obj => obj.id == id)
 		var element = new Object()
 		element.id = id
 		element.websocketURL = "ws://hltv-api-steel.vercel.app/api/scoreboard/" + id
@@ -178,8 +182,8 @@ app.get('/api/ongoingmatches/', async (req, res) => {
 	})
 	res.json(matches)
 })
-
-getLiveIDs().forEach(id => {
+async function test() {
+await getLiveIDs().forEach(id => {
 	app.ws('/api/scoreboard/' + id, async function(ws, req) {
 		var onLogUpdatePrevious
 		var onLogUpdateCurrent
@@ -229,7 +233,7 @@ getLiveIDs().forEach(id => {
 		})
 	})
 })
-
+}
 //broken
 app.get('/api/playerranking/:startdate/:enddate', async (req, res) => {
   const parameters = new Object()
