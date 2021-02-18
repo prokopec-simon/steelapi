@@ -14,7 +14,6 @@ function getMatchesFile() {
 			console.log(matchesFile)
 			return matchesFile
 		}
-	}
 	return matchesFile
 }
 getMatchesFile()
