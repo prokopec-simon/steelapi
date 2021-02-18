@@ -6,22 +6,23 @@ fs.openSync('/tmp/matches.json', 'w')
 const app = express()
 const enableWs = require('express-ws')(app)
 var matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
-console.log(matchesFile)
-function getMatchesFile() {
-	if (matchesFile == undefined) {
-		matchesFile = fs.writeFileSync('/tmp/matches.json', HLTV.getMatches().then((data) => {
-				return data
-			}), 'utf8', (err) => {})
-			console.log(matchesFile)
-		}
-	return matchesFile
+var weirdCache
+async function getMatchesFile() {
+	if (matchesFile == "") {
+		await HLTV.getMatches().then((data) => {
+				weirdCache = data
+		})
+		fs.writeFileSync('/tmp/matches.json', JSON.stringify(weirdCache), 'utf8', (err) => {})
+		matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
+	}
+	return weirdCache
 }
-getMatchesFile()
-console.log("success")
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	matchesFile =  fs.writeFileSync('/tmp/matches.json', matches, 'utf8', (err) => {})
+	console.log(matches)
+	fs.writeFileSync('/tmp/matches.json', JSON.stringify(test), 'utf8', (err) => {})
+	matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
   res.json(matches)
 })
 
@@ -164,8 +165,8 @@ app.get('/api/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async
 
 async function getLiveIDs() {
 	var matchIDs = []
-	var test = getMatchesFile()
-	await test.forEach(obj => {
+	var cache = await getMatchesFile()
+	cache.forEach(obj => {
 		if (obj.live == true) {
 			matchIDs.push(obj.id) 
 		}
@@ -175,8 +176,10 @@ async function getLiveIDs() {
 
 app.get('/api/ongoingmatches/', async (req, res) => {
 	var matches = []
-	await getLiveIDs().forEach(id => {
-		var object = getMatchesFile().find(obj => obj.id == id)
+	var cache = await getMatchesFile()
+	var cacheId = await getLiveIDs()
+	cacheId.forEach(id => {
+		var object = cache.find(obj => obj.id == id)
 		var element = new Object()
 		element.id = id
 		element.websocketURL = "ws://hltv-api-steel.vercel.app/api/scoreboard/" + id
@@ -186,7 +189,8 @@ app.get('/api/ongoingmatches/', async (req, res) => {
 	res.json(matches)
 })
 async function test() {
-await getLiveIDs().forEach(id => {
+	var cacheId = await getLiveIDs()
+cacheId.forEach(id => {
 	app.ws('/api/scoreboard/' + id, async function(ws, req) {
 		var onLogUpdatePrevious
 		var onLogUpdateCurrent
@@ -237,13 +241,13 @@ await getLiveIDs().forEach(id => {
 	})
 })
 }
+test()
 //broken
 app.get('/api/playerranking/:startdate/:enddate', async (req, res) => {
   const parameters = new Object()
   parameters.startDate = req.params.startdate
   parameters.endDate = req.params.enddate
   const playerranking = await HLTV.getPlayerRanking(parameters)
-//  console.log(playerranking)
   res.json(playerranking)
 })
 
