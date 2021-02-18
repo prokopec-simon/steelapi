@@ -8,7 +8,7 @@ var matchesFile
 fs.writeFileSync(matches.json, matchesFile, utf8, (err) => {})
 function getMatchesFile() {
 	if (matchesFile == undefined) {
-		matchesFile = fs.writeFileSync(matches.json, HLTV.getMatches().then((data {
+		matchesFile = fs.writeFileSync(matches.json, HLTV.getMatches().then((data => {
 				return data
 			}), utf8, (err) => {})
 			console.log(matchesFile)
