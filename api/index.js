@@ -5,7 +5,7 @@ const fs = require("fs")
 fs.openSync('/tmp/matches.json', 'w')
 const app = express()
 const enableWs = require('express-ws')(app)
-var matchesFile = fs.readFileSync('matches.json', 'utf8', (err) => {})
+var matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
 console.log(matchesFile)
 function getMatchesFile() {
 	if (matchesFile == undefined) {
