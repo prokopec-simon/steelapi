@@ -2,6 +2,7 @@ const express = require('express')
 const { HLTV } = require("hltv")
 const fs = require("fs")
 
+var fd = fs.openSync(filepath, 'w', (err) => {})
 const app = express()
 const enableWs = require('express-ws')(app)
 var matchesFile = fs.readFileSync('matches.json', 'utf8', (err) => {})
