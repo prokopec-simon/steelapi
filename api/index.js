@@ -5,11 +5,14 @@ const fs = require("fs")
 const app = express()
 const enableWs = require('express-ws')(app)
 var matchesFile
+fs.writeFileSync(matches.json, matchesFile, utf8, (err) => {})
 function getMatchesFile() {
 	if (matchesFile == undefined) {
-		matchesFile = HLTV.getMatches().then(function(data){
-			console.log(data)
-			return data
+		matchesFile = fs.writeFileSync(matches.json, HLTV.getMatches().then((data {
+				return data
+			}), utf8, (err) => {})
+			console.log(matchesFile)
+			return matchesFile
 		})
 	}
 	return matchesFile
