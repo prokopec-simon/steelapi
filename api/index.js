@@ -13,7 +13,7 @@ function getMatchesFile() {
 			}), utf8, (err) => {})
 			console.log(matchesFile)
 			return matchesFile
-		})
+		}
 	}
 	return matchesFile
 }
