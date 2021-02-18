@@ -12,15 +12,15 @@ function getMatchesFile() {
 				return data
 			}), utf8, (err) => {})
 			console.log(matchesFile)
-			return matchesFile
 		}
 	return matchesFile
 }
 getMatchesFile()
+console.log("success")
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	matchesFile = JSON.parse(matches)
+	matchesFile =  fs.writeFileSync(matches.json, matches, utf8, (err) => {})
   res.json(matches)
 })
 
