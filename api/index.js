@@ -2,14 +2,14 @@ const express = require('express')
 const { HLTV } = require("hltv")
 const fs = require("fs")
 
-fs.openSync('matches.json', 'w')
+fs.openSync('/tmp/matches.json', 'w')
 const app = express()
 const enableWs = require('express-ws')(app)
 var matchesFile = fs.readFileSync('matches.json', 'utf8', (err) => {})
 console.log(matchesFile)
 function getMatchesFile() {
 	if (matchesFile == undefined) {
-		matchesFile = fs.writeFileSync('matches.json', HLTV.getMatches().then((data) => {
+		matchesFile = fs.writeFileSync('/tmp/matches.json', HLTV.getMatches().then((data) => {
 				return data
 			}), 'utf8', (err) => {})
 			console.log(matchesFile)
@@ -21,7 +21,7 @@ console.log("success")
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	matchesFile =  fs.writeFileSync('matches.json', matches, 'utf8', (err) => {})
+	matchesFile =  fs.writeFileSync('/tmp/matches.json', matches, 'utf8', (err) => {})
   res.json(matches)
 })
 
