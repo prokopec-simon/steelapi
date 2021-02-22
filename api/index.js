@@ -2,27 +2,70 @@ const express = require('express')
 const { HLTV } = require("hltv")
 const fs = require("fs")
 
-fs.openSync('/tmp/matches.json', 'w')
+var replacer = function(key, value) {
+	return typeof value === 'undefined' ? null : value;
+}
+
 const app = express()
 const enableWs = require('express-ws')(app)
-var matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
-var weirdCache
+
+var matchesFile
 async function getMatchesFile() {
-	if (matchesFile == "") {
-		await HLTV.getMatches().then((data) => {
-				weirdCache = data
-		})
-		fs.writeFileSync('/tmp/matches.json', JSON.stringify(weirdCache), 'utf8', (err) => {})
-		matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
+	if (matchesFile == undefined) {
+		matchesFile = await HLTV.getMatches()
+		return matchesFile
+	} else {
+		return matchesFile
 	}
-	return weirdCache
+}
+
+function arrayDiff (old, neww, miss) {
+	var a = []
+	diff = []
+	for (var i = 0; i < old.length; i++) {
+		a[old[i]] = true;
+	}
+	for (var i = 0; i < neww.length; i++) {
+		if (a[neww[i]]) {
+			delete a[neww[i]];
+		} else {
+			a[neww[i]] = true;
+		}
+	}
+	for (var k in a) {
+		diff.push(k);
+	}
+	var finalReturn = []
+	if (miss) {
+		old.forEach(id => {
+			if (diff.find(newid => newid == id)) {
+				finalReturn.push(id)
+			}
+		})
+		return finalReturn
+	} else {
+		neww.forEach(id => {
+			if (diff.find(newid => newid == id)) {
+				finalReturn.push(id)
+			}
+		})
+		return finalReturn
+	}
+}
+
+function terminateWeboscket(id, interval) {
+	if (justended.includes(id)) {
+		console.log("The Websocketserver for " + id + " has been closed.")
+		ws.close()
+		justended.splice(justended.indexOf(id), 1)
+		clearInterval(interval)
+	}
 }
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()
-	console.log(matches)
-	fs.writeFileSync('/tmp/matches.json', JSON.stringify(test), 'utf8', (err) => {})
-	matchesFile = fs.readFileSync('/tmp/matches.json', 'utf8', (err) => {})
+//	fs.writeFileSync('/tmp/matches.json', JSON.stringify(matches), 'utf8', (err) => {})
+	matchesFile = matches
   res.json(matches)
 })
 
@@ -139,7 +182,7 @@ app.get('/api/teamstats/:id/:currentroster/startdate/:startdate', async (req, re
   parameters.currentRosterOnly = req.params.currentroster
   parameters.id = req.params.id
   parameters.startDate = req.params.startdate
-  console.log(parameters)
+//  console.log(parameters)
   const teamstats = await HLTV.getTeamStats(parameters)
   res.json(teamstats)
 })
@@ -165,83 +208,151 @@ app.get('/api/teamstats/:id/:currentroster/timeframe/:startdate/:enddate', async
 
 async function getLiveIDs() {
 	var matchIDs = []
-	var cache = await getMatchesFile()
-	cache.forEach(obj => {
+	var cacheFile = await getMatchesFile()
+	cacheFile.forEach(obj => {
 		if (obj.live == true) {
 			matchIDs.push(obj.id) 
 		}
 	})
+	console.log(matchIDs)
 	return matchIDs
 }
 
+
 app.get('/api/ongoingmatches/', async (req, res) => {
-	var matches = []
-	var cache = await getMatchesFile()
-	var cacheId = await getLiveIDs()
-	cacheId.forEach(id => {
-		var object = cache.find(obj => obj.id == id)
+	var ongoingmatches = []
+	var cacheFile = await getMatchesFile()
+	var cacheID = await getLiveIDs()
+	cacheID.forEach(id => {
+		var object = cacheFile.find(obj => obj.id == id)
 		var element = new Object()
 		element.id = id
 		element.websocketURL = "ws://hltv-api-steel.vercel.app/api/scoreboard/" + id
 		element.stars = object.stars
-		matches.push(element)
+		ongoingmatches.push(element)
 	})
-	res.json(matches)
+	res.json(ongoingmatches)
 })
-async function test() {
-	var cacheId = await getLiveIDs()
-cacheId.forEach(id => {
+
+async function startScoreboardWebsocket(id) {
 	app.ws('/api/scoreboard/' + id, async function(ws, req) {
 		var onLogUpdatePrevious
 		var onLogUpdateCurrent
 		var onScoreboardUpdatePrevious
 		var onScoreboardUpdateCurrent
-		var scoreboard = HLTV.connectToScorebot({
+		var onFullLogUpdatePrevious
+		var onFullLogUpdateCurrent
+		var closeWebsocket = setInterval(function() { terminateWeboscket(id, closeWebsocket) }, 60000)
+		HLTV.connectToScorebot({
 			id: id,
 			onLogUpdate: (data, done) => {
 				if (onLogUpdatePrevious == undefined) {
 					onLogUpdatePrevious = data
-					ws.send(JSON.stringify(data))
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
 //					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 				}
 				onLogUpdateCurrent = data
 				if (onLogUpdatePrevious != onLogUpdateCurrent) {
-					ws.send(JSON.stringify(data))
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
 //					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 					onLogUpdatePrevious = onLogUpdateCurrent
 				}
 			},
 			onScoreboardUpdate: (data, done) => {
 				if (onScoreboardUpdatePrevious == undefined) {
 					onScoreboardUpdatePrevious = data
-					ws.send(JSON.stringify(data))
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
 //					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 				}
 				onScoreboardUpdateCurrent = data
 				if (onScoreboardUpdatePrevious != onScoreboardUpdateCurrent) {
-					ws.send(JSON.stringify(data))
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
 //					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 					onScoreboardUpdatePrevious = onScoreboardUpdateCurrent
 				}
 			},
 			onFullLogUpdate: (data, done) => {
 				if (onFullLogUpdatePrevious == undefined) {
 					onFullLogUpdatePrevious = data
-					ws.send(JSON.stringify(data))
-//					console.log("message sent for:" + id)
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
+					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 				}
 				onFullLogUpdateCurrent = data
 				if (onFullLogUpdatePrevious != onFullLogUpdateCurrent) {
-					ws.send(JSON.stringify(data))
-//					console.log("message sent for:" + id)
+					if (ws.readyState === 1) {
+						ws.send(JSON.stringify(data))
+					}
+					console.log("message sent for:" + id)
+					if (justended.includes(id)) {
+						done()
+					}
 					onFullLogUpdatePrevious = onFullLogUpdateCurrent
 				}
 			}
 		})
 	})
-})
 }
-test()
+var justarted = []
+var justended = []
+var ongoingIDsCurrent
+var ongoingIDsPrevious
+async function checkForNewMatches() {
+	if (ongoingIDsPrevious == undefined) {
+		ongoingIDsPrevious = await getLiveIDs()
+		console.log(await getLiveIDs())
+		ongoingIDsPrevious.forEach(id => {
+			startScoreboardWebsocket(id)
+		})
+	}
+	ongoingIDsCurrent = await getLiveIDs()
+	console.log("ongoingIDsCurrent: " + JSON.stringify(ongoingIDsCurrent))
+	console.log("ongoingIDsPrevious: " + JSON.stringify(ongoingIDsPrevious))
+	if (JSON.stringify(ongoingIDsCurrent) != JSON.stringify(ongoingIDsPrevious)) {
+		console.log("It seems like the ongoing matches have changed!")
+		var justendedDifference = arrayDiff(ongoingIDsCurrent, ongoingIDsPrevious, false)
+		var justartedDifference = arrayDiff(ongoingIDsCurrent, ongoingIDsPrevious, true)
+		console.log("The following matches just ended" + justendedDifference)
+		console.log("The following matches just started" + justendedDifference)
+		justended = justended.concat(justendedDifference)
+		justarted = justarted.concat(justartedDifference)
+		console.log("The following matches have entered the startingqueue: " + justarted)
+		console.log("The following matches have entered the endingqueue: " + justended)
+		if (justarted != []) {
+			//match started
+			justarted.forEach(id => {
+				justarted.splice(justarted.indexOf(id), 1)
+				startScoreboardWebsocket(id)
+			})
+		}
+	}
+	ongoingIDsPrevious = ongoingIDsCurrent
+}
+
 //broken
 app.get('/api/playerranking/:startdate/:enddate', async (req, res) => {
   const parameters = new Object()
@@ -255,12 +366,7 @@ app.get('/api/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-app.use (function(req, res, next){
-    res.setTimeout(500000, function(){
-        res.send("Timeout")
-    });
-    next();
-});
+setInterval(checkForNewMatches, 60000)
 
 app.listen(3000, () => {
   console.log('Listening on port 3000...')
