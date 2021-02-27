@@ -287,14 +287,18 @@ app.get('/api/eventById/:id', async (req, res) => {
 app.get('/api/team/:name', async (req, res) => {
   const parameters = new Object()
   parameters.name = req.params.name
-  const team = await HLTV.getTeamByName(parameters)
+  const team = await HLTV.getTeamByName(parameters).then(res => {
+    return res
+	}).catch(err => {return {}})
   res.json(team)
 })
 
 app.get('/api/event/:name', async (req, res) => {
   const parameters = new Object()
   parameters.name = req.params.name
-  const event = await HLTV.getEventByName(parameters)
+  const event = await HLTV.getEventByName(parameters).then(res => {
+    return res
+	}).catch(err => {return {}})
   res.json(event)
 })
 
