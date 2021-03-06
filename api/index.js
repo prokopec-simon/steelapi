@@ -89,7 +89,7 @@ async function startScoreboardWebsocket(id) {
 		var onFullLogUpdatePrevious
 		var onFullLogUpdateCurrent
 		var test = false
-		var closeWebsocket = setInterval(stopWebsocket, 60000)
+		var closeWebsocket = setInterval(stopWebsocket, 10000)
 		function stopWebsocket() {
 			if (justended.includes(id)) {
 				ws.close()
@@ -213,7 +213,7 @@ app.get('/api/', async (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-setInterval(checkForNewMatches, 60000)
+setInterval(checkForNewMatches, 10000)
 
 app.get('/api/matches', async (req, res) => {
   const matches = await HLTV.getMatches()

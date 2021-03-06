@@ -2,7 +2,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
-    "hltv": "^2.24.1",
+    "hltv": "^2.24.2",
     "next": "^10.0.6",
     "node-fetch": "^2.6.1",
     "prompt-sync": "^4.2.0",
