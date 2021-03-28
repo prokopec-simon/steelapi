@@ -2,11 +2,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
-    "hltv": "^2.24.2",
-    "next": "^10.0.6",
+    "hltv": "^3.0.0",
+    "next": "^10.0.9",
     "node-fetch": "^2.6.1",
     "prompt-sync": "^4.2.0",
-    "vercel": "^21.2.3",
+    "vercel": "^21.3.3",
     "websocket": "^1.0.33"
   },
   "name": "hltv-api",
