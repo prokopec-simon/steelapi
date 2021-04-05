@@ -1,19 +1,12 @@
 {
   "dependencies": {
     "express": "^4.17.1",
-    "express-ws": "^4.0.0",
-    "hltv": "^3.1.0",
-    "next": "^10.0.9",
-    "node-fetch": "^2.6.1",
-    "prompt-sync": "^4.2.0",
-    "vercel": "^21.3.3",
-    "websocket": "^1.0.33"
+    "hltv": "^3.2.0"
   },
-  "name": "hltv-api",
+  "name": "steelapi",
   "description": "The API for the HLTV-discord-bridge",
   "version": "1.0.0",
   "main": "api/index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node api/index.js"
