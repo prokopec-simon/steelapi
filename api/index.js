@@ -194,7 +194,7 @@ app.get('/api/pastevents/players/:playerids', async (req, res) => {
 //everything about teams
 
 app.get('/api/team/:name', async (req, res) => {
-	res.json(await HLTV.getTeamByName({name: req.params.name, delayBetweenPageRequests: 500}).catch(err =>{console.log("/api/team/:name")}))
+	res.json(await HLTV.getTeamByName({name: req.params.name, delayBetweenPageRequests: 2000}).catch(err =>{console.log("/api/team/:name")}))
 })
 
 app.get('/api/teamById/:id', async (req, res) => { 
@@ -202,7 +202,7 @@ app.get('/api/teamById/:id', async (req, res) => {
 })
 
 app.get('/api/teamstats/:id/', async (req, res) => {
-	res.json(await HLTV.getTeamStats({id: req.params.id, delayBetweenPageRequests: 500}).catch(err =>{console.log("/api/teamstats/:id")}))
+	res.json(await HLTV.getTeamStats({id: req.params.id, delayBetweenPageRequests: 1000}).catch(err =>{console.log("/api/teamstats/:id")}))
 })
 
 //everything about teamranking
