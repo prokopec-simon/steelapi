@@ -144,7 +144,7 @@ app.get('/api/pastevents/', async (req, res) => {
 	if (endday.toString().length == 1) {
 		endday = "0" + endday.toString()
 	}
-	res.json(await HLTV.getPastEvents({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 3000}).catch(err =>{console.log("/api/pastevents")}))
+	res.json(await HLTV.getPastEvents({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 500}).catch(err =>{console.log("/api/pastevents")}))
 })
 
 app.get('/api/pastevents/teams/:teamids', async (req, res) => {
