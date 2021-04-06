@@ -2,6 +2,5 @@ node_modules/
 scoreboard/
 testclient.js
 getScoreboardData.js
-package-lock.json
 favicon.jpg
 api/index.html
