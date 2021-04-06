@@ -82,7 +82,7 @@ app.get('/api/player/:name', async (req, res) => {
 })
 
 app.get('/api/playerById/:id', async (req, res) => {
-	res.json(await HLTV.getPlayer({name: req.params.id})).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getPlayer(" + JSON.stringify({name: req.params.id}) + ")")}))
+	res.json(await HLTV.getPlayer({name: req.params.id}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getPlayer(" + JSON.stringify({name: req.params.id}) + ")")}))
 })
 
 app.get('/api/playerstats/:id', async (req, res) => {
@@ -120,11 +120,11 @@ app.get('/api/events', async (req, res) => {
 })
 
 app.get('/api/event/:name', async (req, res) => {
-	res.json(await HLTV.getEventByName({name: req.params.name, delayBetweenPageRequests: 500}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getEventByName(" + JSON.stringify({name: req.params.name, delayBetweenPageRequests: 500}) + ")"}))
+	res.json(await HLTV.getEventByName({name: req.params.name, delayBetweenPageRequests: 500}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getEventByName(" + JSON.stringify({name: req.params.name, delayBetweenPageRequests: 500}) + ")")}))
 })
 
 app.get('/api/eventById/:id', async (req, res) => {
-	res.json(await HLTV.getEvent({id: req.params.id}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getEvent(" + JSON.stringify({id: req.params.id}) + ")"}))
+	res.json(await HLTV.getEvent({id: req.params.id}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getEvent(" + JSON.stringify({id: req.params.id}) + ")")}))
 })
 
 app.get('/api/pastevents/', async (req, res) => {
@@ -205,7 +205,7 @@ app.get('/api/teamById/:id', async (req, res) => {
 })
 
 app.get('/api/teamstats/:id/', async (req, res) => {
-	res.json(await HLTV.getTeamStats({id: req.params.id, delayBetweenPageRequests: 1000}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getTeamStats(" + JSON.stringify({id: req.params.id, delayBetweenPageRequests: 1000}) + ")"}))
+	res.json(await HLTV.getTeamStats({id: req.params.id, delayBetweenPageRequests: 1000}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getTeamStats(" + JSON.stringify({id: req.params.id, delayBetweenPageRequests: 1000}) + ")")}))
 })
 
 //everything about teamranking
@@ -215,7 +215,7 @@ app.get('/api/ranking', async (req, res) => {
 })
 
 app.get('/api/ranking/:country', async (req, res) => {
-	res.json(await HLTV.getTeamRanking({country: req.params.country}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getTeamRanking(" + JSON.stringify({country: req.params.country}) + ")"}))
+	res.json(await HLTV.getTeamRanking({country: req.params.country}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getTeamRanking(" + JSON.stringify({country: req.params.country}) + ")")}))
 })
 
 const months = ['january','february','march','april','may','june','july','august','september','october','november','december']
@@ -259,11 +259,11 @@ app.get('/api/matchesstats', async (req, res) => {
 	if (endday.toString().length == 1) {
 		endday = "0" + endday.toString()
 	}
-	res.json(await HLTV.getMatchesStats({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 500}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getMatchesStats(" + JSON.stringify({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 500}) + ")")}))
+	res.json(await HLTV.getMatchMapStats({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 500}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getMatchesStats(" + JSON.stringify({startDate: date.getYear() + 1900 + "-" + startmonth + "-" + startday, endDate: (new Date()).getYear() + 1900 + "-" + endmonth + "-" + endday, delayBetweenPageRequests: 500}) + ")")}))
 })
 
 app.get('/api/matchmapstats/:id', async (req, res) => {
-	res.json(await HLTV.getMatchStats({id: req.params.id}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getMatchStats(" + JSON.stringify({id: req.params.id) + ")")}))
+	res.json(await HLTV.getMatchStats({id: req.params.id}).catch(err =>{http.get("http://debug.revilum.com/?error=HLTV.getMatchStats(" + JSON.stringify({id: req.params.id}) + ")")}))
 })
 
 app.get('/api/streams/', async (req, res) => {
