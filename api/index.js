@@ -353,6 +353,10 @@ app.get('/api/error/', async (req, res) => {
 	res.send("error")
 })
 
+app.get('/api/test/', async (req, res) => {
+	res.send("test")
+})
+
 var server = app.listen(3000, () => {
 	console.log('Listening on port 3000...')
 })
