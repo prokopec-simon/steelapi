@@ -139,7 +139,8 @@ app.get('/api/events', async (req, res) => {
 
 app.get('/api/event/:name', async (req, res) => {
 	var parameters = {name: req.params.name, delayBetweenPageRequests: 300}
-	res.json(await HLTV.getEventByName(parameters).catch(err =>{res.send(catchErrors(err, "getEventByName", parameters))}))
+//	res.json(await HLTV.getEventByName(parameters).catch(err =>{res.send(catchErrors(err, "getEventByName", parameters))}))
+	res.json(await HLTV.getEventByName(parameters)
 })
 
 app.get('/api/eventById/:id', async (req, res) => {
