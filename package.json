@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "express": "^4.17.1",
-    "hltv": "^3.2.0"
+    "hltv": "^3.2.1"
   },
   "name": "steelapi",
   "description": "The API for the HLTV-discord-bridge",
@@ -9,7 +9,7 @@
   "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node api/index.js"
+    "star": "node api/index.js"
   },
   "repository": {
     "type": "git",
