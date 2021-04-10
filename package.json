@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "express": "^4.17.1",
-    "hltv": "^3.2.1"
+    "hltv": "^3.3.0"
   },
   "name": "steelapi",
   "description": "The API for the HLTV-discord-bridge",
