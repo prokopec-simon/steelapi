@@ -8,7 +8,6 @@ function catchErrors(err, func, parameters) {
 		parameters = ""
 	}
 	http.get("http://debug.revilum.com/?error=" + func + "(" + JSON.stringify(parameters) + ")" + err)
-	console.log(err)
 	if (err == "Error: Access denied | www.hltv.org used Cloudflare to restrict access") {
 		return "403"
 	} else {
@@ -145,7 +144,7 @@ app.get('/api/event/:name', async (req, res) => {
 
 app.get('/api/eventById/:id', async (req, res) => {
 	var parameters = {id: req.params.id}
-	res.json(await HLTV.getEvent(parameters).catch(err =>{res.send(catchErrors(err, "getEvent", parameters ))}))
+	res.json(await HLTV.getEvent(parameters).catch(err =>{res.send(catchErrors(err, "getEvent", parameters))}))
 })
 
 app.get('/api/pastevents/', async (req, res) => {
