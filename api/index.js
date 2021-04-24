@@ -95,7 +95,7 @@ app.get('/api/player/:name', async (req, res) => {
 })
 
 app.get('/api/playerById/:id', async (req, res) => {
-	var parameters = {name: req.params.id}
+	var parameters = {id: req.params.id}
 	res.json(await HLTV.getPlayer(parameters).catch(err =>{res.send(catchErrors(err, "getPlayer", parameters))}))
 })
 
