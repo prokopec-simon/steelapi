@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>hltv-api</title>
+	</head>
+	<body>
+		<h2>everything about results</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/results">/results Will return the results from today and yesterday.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/resultsteams/[6665]">/results/teams/[teamids] Will return the results from the past 3 months from teams in an array.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/results/events/[5553]">/results/events/[eventids] Will return the results from the past 3 months from events in an array.</a><br />
+		<h2>everything about players</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/player/chrisj">/player/name This will return a specified player for a given name.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/playerById/7998">/playerById/id Will do the same as above but takes an id instead of a name.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/playerstats/7998">/playerstats/id This will give you additional information about a player./a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/playerranking/">/playerranking/ This gives current playerranking from this year(may take some time to load).</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/playerranking/2017">/playerranking/year This gives playerranking from specified year (may take some time to load).</a><br />
+		<h2>everything about events</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/events">/events Will return all upcoming and ongoing events.<br />
+		<a href="https://hltv-api-steel.vercel.app/api/event/3389">/event/name This gives info about a sepcific event.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/eventbyid/3389">/eventbyid/id This gives info about a sepcific event.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/pastevents">/pastevents Will return all past events from the last month.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/pastevents/teams/[10333]">/pastevents/team/[teamids] Will return all played events during the last year from an array of teams.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/pastevents/players/[5794]">/pastevents/player/[teamids] Will return all played events during the last year from an array of players.</a><br />
+		<h2>everything about teams</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/team/big">/team/name This gives achievments of a team.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/teamById/6137">/teambyid/id This gives achievments of a team.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/teamstats/6137">/teamstats/id/ This gives stats about a team.</a><br />
+		<h2>everything about teamranking</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/ranking">/ranking This Will return the current top30 world ranking.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/ranking/germany">/ranking/country Will return the current ranking in the specified country.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/ranking/27/april/2017">/ranking/day(number)/month(word)/year(number)Will return the world ranking at the specified date.</a><br />
+		<h2>everything about matches</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/matches">/matches This data contains information about all currently scheduled matches.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/match/2306295">/match/id This gives infomation about a match.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/matchstats/62979">/matchstats/id This will give additional information about a match.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/matchesstats">/matchesstats Will return information about recent matches and about specific matches from today and yesterday.</a><br />
+		<a href="https://hltv-api-steel.vercel.app/api/matchmapstats/49968">/matchmapstats/id This will give additional information about a specific map in a match.</a><br />
+		<h2>uncategorized data</h2>
+		<a href="https://hltv-api-steel.vercel.app/api/streams">/streams This gives a list of current csgo stream.</a><br />
+	</body>
+</html>
