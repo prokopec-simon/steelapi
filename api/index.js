@@ -8,7 +8,7 @@ const app = express()
 app.use(bodyParser.json())
 
 async function reportError(err, func, opt) {
-	return await axios.post('http://debug.revilum.com', {
+	return await axios.post('https://debug.revilum.com', {
 		"error": err.toString(),
 		"function": func,
 		"options": opt
@@ -233,6 +233,11 @@ app.post("/api/getNews", async (req, res) => {
 		reportError(err, "getNews", req.body)
 		res.status(400).send(err.toString())
 	}
+})
+
+app.get("/api/test", async (req, res) => {
+	var ja =await HLTV.getTeamStats({ id: 6137 })
+	res.json(ja)
 })
 
 var server = app.listen(3000, () => {
