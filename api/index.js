@@ -1,5 +1,5 @@
 const express = require('express')
-const { HLTV } = require('hltv')
+const { HLTV } = require('hltv-next')
 const http = require('http')
 const bodyParser = require('body-parser')
 const axios = require('axios')
