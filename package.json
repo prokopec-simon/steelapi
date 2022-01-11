@@ -3,7 +3,7 @@
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "hltv-next": "^3.3.4"
+    "hltv-next": "^3.3.5"
   },
   "name": "steelapi",
   "description": "The API for the HLTV-discord-bridge",
