@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const axios = require('axios')
 const app = express()
 
+require('child_process').fork('../node_modules/puppeteer/install.js')
+
 app.use(bodyParser.json())
 
 async function reportError(err, func, opt) {
