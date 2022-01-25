@@ -11,7 +11,7 @@
   "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "star": "node api/index.js"
+    "star": "node index.js"
   },
   "repository": {
     "type": "git",
