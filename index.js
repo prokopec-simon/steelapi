@@ -234,6 +234,6 @@ app.get("/api/test", async (req, res) => {
 	res.json(ja)
 })
 
-var server = app.listen(process.env.PORT, () => {
+var server = app.listen(3000, () => {
 	console.log('Listening on port 3000...')
 })
