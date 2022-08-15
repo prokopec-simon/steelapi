@@ -5,7 +5,8 @@
   "ignoreDeps": ["hltv-next"],
   "automerge": true,
   "major": {
-		"automerge": false
+		"automerge": false,
+  "enabled" : false
 	},
   "requiredStatusChecks": null
 }
