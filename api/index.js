@@ -230,7 +230,15 @@ app.post("/api/getNews", async (req, res) => {
 	}
 })
 
-
+app.post("/api/getRssNews", async (req, res) => {
+	try {
+		var response = await HLTV.getRssNews(req.body)
+		res.json(response)
+	} catch (err) {
+		var errorId = await reportError(err, "getRssNews", req.body)
+		res.status(400).send({error: err.toString(), id: errorId})
+	}
+})
 
 app.get("/api/test", async (req, res) => {
 	const ja = await HLTV.getTeamStats({ id: 6137 })
