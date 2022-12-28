@@ -7,12 +7,11 @@ const app = express()
 app.use(bodyParser.json())
 
 async function reportError(err, func, opt) {
-	var result = await axios.post('https://debug.revilum.com', {
+	return (await axios.post('https://debug.revilum.com', {
 		"error": err.toString(),
 		"function": func,
 		"options": opt
-	})
-	return result.data
+	})).data
 	
 }
 
@@ -68,7 +67,7 @@ app.post("/api/getMatchMapStats", async (req, res) => {
 
 app.post("/api/getStreams", async (req, res) => {
 	try {
-		const response = await HLTV.getStreams(req.body)
+		const response = await HLTV.getStreams()
 		res.json(response)
 	} catch (err) {
 		const errorId = await reportError(err, "getStreams", req.body)
@@ -78,7 +77,7 @@ app.post("/api/getStreams", async (req, res) => {
 
 app.post("/api/getRecentThreads", async (req, res) => {
 	try {
-		const response = await HLTV.getRecentThreads(req.body)
+		const response = await HLTV.getRecentThreads()
 		res.json(response)
 	} catch (err) {
 		const errorId = await reportError(err, "getRecentThreads", req.body)
@@ -89,10 +88,6 @@ app.post("/api/getRecentThreads", async (req, res) => {
 app.post("/api/getTeamRanking", async (req, res) => {
 	try {
 		const response = await HLTV.getTeamRanking(req.body)
-		console.log(response)
-		if (response.length === 0) {
-			throw new TypeError("invalid country")
-		}
 		res.json(response)
 	} catch (err) {
 		const errorId = await reportError(err, "getTeamRanking", req.body)
@@ -202,40 +197,40 @@ app.post("/api/getEventByName", async (req, res) => {
 
 app.post("/api/getPastEvents", async (req, res) => {
 	try {
-		var response = await HLTV.getPastEvents(req.body)
+		const response = await HLTV.getPastEvents(req.body);
 		res.json(response)
 	} catch (err) {
-		var errorId = await reportError(err, "getPastEvents", req.body)
+		const errorId = await reportError(err, "getPastEvents", req.body);
 		res.status(400).send({error: err.toString(), id: errorId})
 	}
 })
 
 app.post("/api/getResults", async (req, res) => {
 	try {
-		var response = await HLTV.getResults(req.body)
+		const response = await HLTV.getResults(req.body);
 		res.json(response)
 	} catch (err) {
-		var errorId = await reportError(err, "getResults", req.body)
+		const errorId = await reportError(err, "getResults", req.body);
 		res.status(400).send({error: err.toString(), id: errorId})
 	}
 })
 
 app.post("/api/getNews", async (req, res) => {
 	try {
-		var response = await HLTV.getNews(req.body)
+		const response = await HLTV.getNews(req.body);
 		res.json(response)
 	} catch (err) {
-		var errorId = await reportError(err, "getNews", req.body)
+		const errorId = await reportError(err, "getNews", req.body);
 		res.status(400).send({error: err.toString(), id: errorId})
 	}
 })
 
 app.post("/api/getRssNews", async (req, res) => {
 	try {
-		var response = await HLTV.getRssNews(req.body)
+		const response = await HLTV.getRssNews();
 		res.json(response)
 	} catch (err) {
-		var errorId = await reportError(err, "getRssNews", req.body)
+		const errorId = await reportError(err, "getRssNews", req.body);
 		res.status(400).send({error: err.toString(), id: errorId})
 	}
 })
