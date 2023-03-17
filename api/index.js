@@ -2,12 +2,18 @@ const express = require('express')
 const { HLTV } = require('hltv-next')
 const bodyParser = require('body-parser')
 const axios = require('axios')
-const app = express()
+const { gotScraping } = require('got-scraping')
+const path = require('path')
 
+const hltv = HLTV.createInstance({
+	loadPage: (url) => gotScraping({ url }).then((res) => res.body)
+});
+
+const app = express()
 app.use(bodyParser.json())
 
 async function reportError(err, func, opt) {
-	return (await axios.post('https://debug.revilum.com', {
+	return (await axios.post(process.env.DEBUG_DOMAIN, {
 		"error": err.toString(),
 		"function": func,
 		"options": opt
@@ -15,230 +21,46 @@ async function reportError(err, func, opt) {
 	
 }
 
-app.post("/api/getMatch", async (req, res) => {
-	try {
-		const response = await HLTV.getMatch(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getMatch", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
+function createEndpoint(endpoint, func) {
+	app.post(endpoint, async (req, res) => {
+		try {
+			const response = await func(req.body)
+			res.json(response)
+		} catch (err) {
+			const errorId = await reportError(err, path.parse(endpoint).base, req.body)
+			res.status(400).send({error: err.toString(), id: errorId})
+		}
+	})
+}
 
-app.post("/api/getMatches", async (req, res) => {
-	try {
-		const response = await HLTV.getMatches(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getMatches", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
+dict = {
+	"/api/getMatch": hltv.getMatch,
+	"/api/getMatches": hltv.getMatches,
+	"/api/getMatchesStats": hltv.getMatchesStats,
+	"/api/getMatchStats": hltv.getMatchStats,
+	"/api/getMatchMapStats": hltv.getMatchMapStats,
+	"/api/getStreams": hltv.getStreams,
+	"/api/getRecentThreads": hltv.getRecentThreads,
+	"/api/getTeamRanking": hltv.getTeamRanking,
+	"/api/getTeam": hltv.getTeam,
+	"/api/getTeamByName": hltv.getTeamByName,
+	"/api/getTeamStats": hltv.getTeamStats,
+	"/api/getPlayer": hltv.getPlayer,
+	"/api/getPlayerByName": hltv.getPlayerByName,
+	"/api/getPlayerStats": hltv.getPlayerStats,
+	"/api/getPlayerRanking": hltv.getPlayerRanking,
+	"/api/getEvents": hltv.getEvents,
+	"/api/getEvent": hltv.getEvent,
+	"/api/getEventByName": hltv.getEventByName,
+	"/api/getPastEvents": hltv.getPastEvents,
+	"/api/getResults": hltv.getResults,
+	"/api/getNews": hltv.getNews,
+	"/api/getRssNews": hltv.getRssNews
+}
 
-app.post("/api/getMatchesStats", async (req, res) => {
-	try {
-		const response = await HLTV.getMatchesStats(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getMatchesStats", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getMatchStats", async (req, res) => {
-	try {
-		const response = await HLTV.getMatchStats(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getMatchStats", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getMatchMapStats", async (req, res) => {
-	try {
-		const response = await HLTV.getMatchMapStats(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getMatchMapStats", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getStreams", async (req, res) => {
-	try {
-		const response = await HLTV.getStreams()
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getStreams", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getRecentThreads", async (req, res) => {
-	try {
-		const response = await HLTV.getRecentThreads()
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getRecentThreads", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getTeamRanking", async (req, res) => {
-	try {
-		const response = await HLTV.getTeamRanking(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getTeamRanking", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getTeam", async (req, res) => {
-	try {
-		const response = await HLTV.getTeam(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getTeam", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getTeamByName", async (req, res) => {
-	try {
-		const response = await HLTV.getTeamByName(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getTeamByName", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getTeamStats", async (req, res) => {
-	try {
-		const response = await HLTV.getTeamStats(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getTeamStats", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getPlayer", async (req, res) => {
-	try {
-		const response = await HLTV.getPlayer(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getPlayer", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getPlayerByName", async (req, res) => {
-	try {
-		const response = await HLTV.getPlayerByName(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getPlayerByName", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getPlayerStats", async (req, res) => {
-	try {
-		const response = await HLTV.getPlayerStats(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getPlayerStats", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getPlayerRanking", async (req, res) => {
-	try {
-		const response = await HLTV.getPlayerRanking(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getPlayerRanking", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getEvents", async (req, res) => {
-	try {
-		const response = await HLTV.getEvents(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getEvents", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getEvent", async (req, res) => {
-	try {
-		const response = await HLTV.getEvent(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getEvent", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getEventByName", async (req, res) => {
-	try {
-		const response = await HLTV.getEventByName(req.body)
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getEventByName", req.body)
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getPastEvents", async (req, res) => {
-	try {
-		const response = await HLTV.getPastEvents(req.body);
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getPastEvents", req.body);
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getResults", async (req, res) => {
-	try {
-		const response = await HLTV.getResults(req.body);
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getResults", req.body);
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getNews", async (req, res) => {
-	try {
-		const response = await HLTV.getNews(req.body);
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getNews", req.body);
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.post("/api/getRssNews", async (req, res) => {
-	try {
-		const response = await HLTV.getRssNews();
-		res.json(response)
-	} catch (err) {
-		const errorId = await reportError(err, "getRssNews", req.body);
-		res.status(400).send({error: err.toString(), id: errorId})
-	}
-})
-
-app.get("/api/test", async (req, res) => {
-	const ja = await HLTV.getTeamStats({ id: 6137 })
-	res.json(ja)
-})
+for (const [key, value] of Object.entries(dict)) {
+	createEndpoint(key, value)
+}
 
 app.listen(3000, () => {
 	console.log('Listening on port 3000...')
