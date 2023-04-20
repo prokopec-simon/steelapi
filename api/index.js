@@ -1,7 +1,7 @@
 const express = require("express");
 const { HLTV } = require("hltv-next");
 const bodyParser = require("body-parser");
-import chromium from "chrome-aws-lambda";
+import edgeChromium from "chrome-aws-lambda";
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
