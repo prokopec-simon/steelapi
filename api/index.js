@@ -4,9 +4,25 @@ const bodyParser = require('body-parser')
 const axios = require('axios')
 const { gotScraping } = require('got-scraping')
 const path = require('path')
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+
+puppeteer.use(StealthPlugin())
+let browser
+(async () => {
+	browser = await puppeteer.launch({headless: false})
+})()
 
 const hltv = HLTV.createInstance({
-	loadPage: (url) => gotScraping({ url }).then((res) => res.body)
+	//loadPage: (url) => gotScraping({ url }).then((res) => res.body)
+	loadPage: async url => {
+		let page = await browser.newPage()
+		await page.goto(url)
+		await page.waitForSelector('.navbar')
+		let buffer = await page.content()
+		await page.close()
+		return buffer
+	}
 });
 
 const app = express()
