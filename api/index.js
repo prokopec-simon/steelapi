@@ -11,7 +11,7 @@ let browser;
   let exec_path = await edgeChromium.executablePath;
 
   if (process.env.AWS_EXECUTION_ENV === undefined) {
-		console.log("AWS Chromium not found, trying to use local chromium...")
+    console.log("AWS Chromium not found, trying to use local chromium...");
     exec_path = process.env.LOCAL_CHROMIUM;
   }
   browser = await puppeteer.launch({
@@ -48,7 +48,7 @@ function createEndpoint(endpoint, func) {
   });
 }
 
-dict = {
+const dict = {
   "/api/getMatch": hltv.getMatch,
   "/api/getMatches": hltv.getMatches,
   "/api/getMatchesStats": hltv.getMatchesStats,
