@@ -1,11 +1,11 @@
 const express = require("express");
 const { HLTV } = require("hltv-next");
 const bodyParser = require("body-parser");
-const chromium = require('chrome-aws-lambda')
-const puppeteer = require("puppeteer-extra");
-const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+const chromium = require("chrome-aws-lambda");
+const puppeteer = require("puppeteer");
+//const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
-puppeteer.use(StealthPlugin());
+//puppeteer.use(StealthPlugin());
 let browser;
 (async () => {
   let exec_path = await chromium.executablePath;
