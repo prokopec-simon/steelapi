@@ -2,7 +2,7 @@ const express = require("express");
 const { HLTV } = require("hltv-next");
 const bodyParser = require("body-parser");
 const chromium = require("chrome-aws-lambda");
-const puppeteer = require("puppeteer-extra");
+const puppeteer = require("puppeteer");
 //const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 //puppeteer.use(StealthPlugin());
