@@ -1,10 +1,37 @@
-const express = require('express')
-const { HLTV } = require('hltv-next')
-const bodyParser = require('body-parser')
-const { gotScraping } = require('got-scraping')
+const express = require("express");
+const { HLTV } = require("hltv-next");
+const bodyParser = require("body-parser");
+import chromium from "chrome-aws-lambda";
+const puppeteer = require("puppeteer-extra");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
+puppeteer.use(StealthPlugin());
+let browser;
+(async () => {
+  let exec_path = await edgeChromium.executablePath;
+
+  if (process.env.AWS_EXECUTION_ENV === undefined) {
+		console.log("AWS Chromium not found, trying to use local chromium...")
+    exec_path = process.env.LOCAL_CHROMIUM;
+  }
+  browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: exec_path,
+    headless: chromium.headless,
+  });
+})();
 
 const hltv = HLTV.createInstance({
-	loadPage: (url) => gotScraping({ url }).then((res) => res.body)
+  loadPage: async (url) => {
+    let page = await browser.newPage();
+    await page.setViewport({ width: 800, height: 600 });
+    await page.goto(url);
+    await page.waitForSelector(".navbar");
+    let buffer = await page.content();
+    await page.close();
+    return buffer;
+  },
 });
 
 const app = express();
