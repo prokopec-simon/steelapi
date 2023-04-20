@@ -2,7 +2,7 @@ const express = require("express");
 const { HLTV } = require("hltv-next");
 const bodyParser = require("body-parser");
 const chromium = require("chrome-aws-lambda");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
 //const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 //puppeteer.use(StealthPlugin());
@@ -20,6 +20,11 @@ let browser;
     executablePath: exec_path,
     headless: chromium.headless,
   });
+
+  const page = await browser.newPage();
+  await page.goto("https://www.google.com");
+  console.log(await page.title());
+  page.close();
 })();
 
 const hltv = HLTV.createInstance({
