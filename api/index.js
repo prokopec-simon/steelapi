@@ -1,14 +1,14 @@
 const express = require("express");
 const { HLTV } = require("hltv-next");
 const bodyParser = require("body-parser");
-import edgeChromium from "chrome-aws-lambda";
+const chromium = require('chrome-aws-lambda')
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 puppeteer.use(StealthPlugin());
 let browser;
 (async () => {
-  let exec_path = await edgeChromium.executablePath;
+  let exec_path = await chromium.executablePath;
 
   if (process.env.AWS_EXECUTION_ENV === undefined) {
     console.log("AWS Chromium not found, trying to use local chromium...");
