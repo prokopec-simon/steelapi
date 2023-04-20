@@ -1,10 +1,10 @@
-const express = require("express");
-const { HLTV } = require("hltv-next");
-const bodyParser = require("body-parser");
-const { gotScraping } = require("got-scraping");
+const express = require('express')
+const { HLTV } = require('hltv-next')
+const bodyParser = require('body-parser')
+const { gotScraping } = require('got-scraping')
 
 const hltv = HLTV.createInstance({
-  loadPage: (url) => gotScraping({ url }).then((res) => res.body),
+	loadPage: (url) => gotScraping({ url }).then((res) => res.body)
 });
 
 const app = express();
