@@ -15,7 +15,7 @@ let browser
 
 const hltv = HLTV.createInstance({
 	//loadPage: (url) => gotScraping({ url }).then((res) => res.body)
-	loadPage: async url => {
+	loadPage: async (url) => {
 		let page = await browser.newPage()
 		await page.goto(url)
 		await page.waitForSelector('.navbar')
